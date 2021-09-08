@@ -1,6 +1,5 @@
 import React from "react"
 import { graphql } from "gatsby"
-import Home from "../components/Page-Components/Home/Home"
 import Reel from "../components/Page-Components/Reel/Reel"
 import Stills from "../components/Page-Components/Stills/Stills"
 import About from "../components/Page-Components/About/About"
@@ -8,9 +7,7 @@ import Contact from "../components/Page-Components/Contact/Contact"
 
 const WpPageTemplate = ({ data }) => {
   const page = data?.allWpPage?.edges[0]?.node || {}
-  if (page.slug === "/") {
-    // return <Home />
-  } else if (page.slug === "reel") {
+  if (page.slug === "reel") {
     return <Reel />
   } else if (page.slug === "stills") {
     return <Stills />

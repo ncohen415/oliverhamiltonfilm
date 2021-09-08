@@ -1,7 +1,6 @@
 import React, { useState } from "react"
 import styled from "styled-components"
 import Video from "./video"
-import { Link } from "gatsby"
 import { media } from "../mq"
 
 const ProjectContainer = styled.div`

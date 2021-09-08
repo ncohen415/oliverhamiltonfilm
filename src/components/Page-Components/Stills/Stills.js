@@ -7,6 +7,9 @@ import Modal from "./Modal"
 const StillsPageContainer = styled.div`
   width: 100%;
   height: 100%;
+  &.open {
+    position: fixed;
+  }
 `
 
 const Stills = () => {
@@ -22,7 +25,7 @@ const Stills = () => {
               localFile {
                 childImageSharp {
                   gatsbyImageData(
-                    formats: WEBP
+                    formats: PNG
                     layout: CONSTRAINED
                     placeholder: BLURRED
                     quality: 100
@@ -37,7 +40,7 @@ const Stills = () => {
   `)
   const stills = data?.wpPage?.StillsACF?.stills
   return (
-    <StillsPageContainer>
+    <StillsPageContainer className={isModalActive === true ? "open" : ""}>
       <StillsListing
         setIsModalActive={setIsModalActive}
         setModalImage={setModalImage}

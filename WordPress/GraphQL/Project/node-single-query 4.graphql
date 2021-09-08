@@ -1,0 +1,50 @@
+query SINGLE_CONTENT_QUERY($id: ID!) {
+  project(id: $id) {
+    contentType {
+      node {
+        id
+      }
+    }
+    databaseId
+    date
+    dateGmt
+    desiredSlug
+    enclosure
+    guid
+    id
+    isContentNode
+    isTermNode
+    lastEditedBy {
+      node {
+        id
+      }
+    }
+    link
+    modified
+    modifiedGmt
+    ProjectsACF {
+      fieldGroupName
+      thumbnailMedia {
+        fieldGroupName
+        projectThumbnailImage {
+          __typename
+          id
+        }
+        projectVideoPreviewMp4
+        projectVideoPreviewWebm
+      }
+      title
+      videoEmbed
+      videoGenre
+    }
+    slug
+    status
+    template {
+      templateName
+      __typename
+    }
+    title
+    uri
+    __typename
+  }
+}

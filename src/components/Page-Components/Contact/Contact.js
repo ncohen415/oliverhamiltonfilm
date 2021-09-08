@@ -81,7 +81,7 @@ const Contact = () => {
             localFile {
               childImageSharp {
                 gatsbyImageData(
-                  formats: WEBP
+                  formats: PNG
                   layout: CONSTRAINED
                   placeholder: BLURRED
                   quality: 100
@@ -103,7 +103,7 @@ const Contact = () => {
       </div>
       <div className="email-wrapper">
         <p>email:</p>
-        <a target="_blank" href={`mailto:${contactACF.email}`}>
+        <a target="_blank" rel="noreferrer" href={`mailto:${contactACF.email}`}>
           {contactACF.email}
         </a>
       </div>

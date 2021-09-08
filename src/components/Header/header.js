@@ -83,10 +83,9 @@ const HeaderContainer = styled.header`
   }
 `
 
-const Header = () => {
+const Header = ({ isOpen, setIsOpen }) => {
   const [menuLeft, setMenuLeft] = useState([])
   const [menuRight, setMenuRight] = useState([])
-  const [isOpen, setIsOpen] = useState(false)
 
   const data = useStaticQuery(graphql`
     query HeaderQuery {
@@ -102,7 +101,7 @@ const Header = () => {
         localFile {
           childImageSharp {
             gatsbyImageData(
-              formats: WEBP
+              formats: PNG
               layout: CONSTRAINED
               placeholder: TRACED_SVG
             )
@@ -116,7 +115,6 @@ const Header = () => {
     let menu = data?.wpMenu?.menuItems?.nodes
     let menuLeft = []
     let menuRight = []
-
     if (menu[0] && menu[1]) {
       menuLeft.push(menu[1], menu[2])
       setMenuLeft(menuLeft)

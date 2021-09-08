@@ -1,11 +1,4 @@
-/**
- * Layout component that queries for data
- * with Gatsby's useStaticQuery component
- *
- * See: https://www.gatsbyjs.com/docs/use-static-query/
- */
-
-import React from "react"
+import React, { useState } from "react"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
 import styled from "styled-components"
@@ -16,12 +9,13 @@ import "./layout.css"
 const LayoutContainer = styled.div`
   margin: 0 auto;
   padding: 0 3rem 0 3rem;
-  &.active {
-    display: none;
+  &.open {
+    position: fixed;
   }
 `
 
 const Layout = ({ children }) => {
+  const [isOpen, setIsOpen] = useState(false)
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {
       site {
@@ -34,8 +28,12 @@ const Layout = ({ children }) => {
 
   return (
     <>
-      <Header siteTitle={data.site.siteMetadata?.title || `Title`} />
-      <LayoutContainer>
+      <Header
+        isOpen={isOpen}
+        setIsOpen={setIsOpen}
+        siteTitle={data.site.siteMetadata?.title || `Title`}
+      />
+      <LayoutContainer className={isOpen === true ? "open" : ""}>
         <main>{children}</main>
       </LayoutContainer>
     </>

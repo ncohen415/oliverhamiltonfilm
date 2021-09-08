@@ -30,7 +30,7 @@ const ProjectListing = () => {
                   localFile {
                     childImageSharp {
                       gatsbyImageData(
-                        formats: WEBP
+                        formats: PNG
                         layout: CONSTRAINED
                         placeholder: BLURRED
                         quality: 100

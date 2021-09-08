@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React from "react"
 import styled from "styled-components"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import Close from "../../../images/close.svg"
@@ -29,13 +29,11 @@ const ImageModal = styled.div`
     position: absolute;
     right: 5%;
     top: 5%;
-    background: none;
-    color: inherit;
     border: none;
     padding: 0;
-    font: inherit;
+    background: none;
     cursor: pointer;
-    outline: inherit;
+    outline: none;
     img {
       opacity: 0.9;
     }
@@ -51,15 +49,12 @@ const Modal = ({
 }) => {
   console.log(still)
   return (
-    <ImageModal
-      onClick={e => setIsModalActive(false)}
-      className={clicked === true ? "clicked" : ""}
-    >
+    <ImageModal onClick={e => setIsModalActive(false)}>
       <div className="image-wrapper">
         <GatsbyImage image={getImage(modalImage)} />
       </div>
       <button onClick={e => setIsModalActive(false)} className="close">
-        <img src={Close} />
+        <img src={Close} alt="Close" />
       </button>
     </ImageModal>
   )
