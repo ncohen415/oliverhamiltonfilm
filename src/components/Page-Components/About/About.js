@@ -14,13 +14,13 @@ const AboutPageContainer = styled.div`
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   ${media.medium`flex-direction: row;`}
   .image-wrapper {
-    flex: 0 1 50%;
+    flex: 0 1 40%;
     margin: 0 0 3rem 0;
     padding: 0;
     ${media.medium`margin: 0; padding: 0 1rem 0 0;`}
   }
   .blurb-wrapper {
-    flex: 0 1 50%;
+    flex: 0 1 60%;
     padding: 0;
     text-align: center;
     ${media.medium`margin: 0; padding: 0 1rem 0 0; text-align: left;`}
