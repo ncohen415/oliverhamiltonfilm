@@ -4,7 +4,7 @@ import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import Close from "../../../images/close.svg"
 
 const ImageModal = styled.div`
-  display: none;
+  display: flex;
   position: fixed;
   z-index: 10;
   left: 0;
@@ -15,12 +15,14 @@ const ImageModal = styled.div`
   border: none;
   background-color: rgba(255, 255, 255, 0.8);
   cursor: pointer;
-  &.clicked {
+  .image-wrapper {
+    height: 100%;
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
     .gatsby-image-wrapper {
-      flex: 0 1 75%;
+      width: 80%;
     }
   }
   .close {
@@ -40,15 +42,23 @@ const ImageModal = styled.div`
   }
 `
 
-const Modal = ({ still, setClicked, clicked }) => {
+const Modal = ({
+  still,
+  setClicked,
+  clicked,
+  modalImage,
+  setIsModalActive,
+}) => {
   console.log(still)
   return (
     <ImageModal
-      onClick={e => setClicked(false)}
+      onClick={e => setIsModalActive(false)}
       className={clicked === true ? "clicked" : ""}
     >
-      <GatsbyImage image={getImage(still.photos.localFile)} />
-      <button onClick={e => setClicked(false)} className="close">
+      <div className="image-wrapper">
+        <GatsbyImage image={getImage(modalImage)} />
+      </div>
+      <button onClick={e => setIsModalActive(false)} className="close">
         <img src={Close} />
       </button>
     </ImageModal>

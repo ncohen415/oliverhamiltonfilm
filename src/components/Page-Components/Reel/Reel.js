@@ -1,6 +1,7 @@
 import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import styled from "styled-components"
+import { media } from "../../mq"
 
 const ReelPageContainer = styled.div`
   height: 100%;
@@ -9,13 +10,14 @@ const ReelPageContainer = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  padding: 0 5% 5% 5%;
+  padding: 0;
+  margin-top: 3rem;
+  ${media.large`margin-top: 0; padding: 0 5% 5% 5%;`}
   .reel-container {
     position: relative;
     overflow: hidden;
     width: 100%;
     padding-top: 56.25%;
-
     iframe {
       position: absolute;
       top: 0;

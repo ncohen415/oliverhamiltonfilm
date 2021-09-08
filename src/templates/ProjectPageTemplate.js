@@ -21,6 +21,7 @@ export const data = graphql`
           ProjectsACF {
             title
             videoGenre
+            videoEmbed
             thumbnailMedia {
               projectVideoPreviewMp4
               projectVideoPreviewWebm

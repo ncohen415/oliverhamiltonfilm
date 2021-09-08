@@ -2,21 +2,38 @@ import React, { useState } from "react"
 import styled from "styled-components"
 import Video from "./video"
 import { Link } from "gatsby"
+import { media } from "../mq"
 
 const ProjectContainer = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
-  height: 37vh;
+  height: 27vh;
+  margin-bottom: 4rem;
+  ${media.small`height: 37vh; margin-bottom: 2rem;`}
+  ${media.smallMedium`height: 37vh; margin-bottom: 0;`}
+  ${media.medium`margin-bottom: 2rem;`}
   .video-row {
     display: flex;
     height: 27vh;
     flex: 0 1 100%;
+    div:nth-child(2) {
+      display: none;
+      ${media.smallMedium`display: flex;`}
+    }
+    div:nth-child(3) {
+      display: none;
+      ${media.large`display: flex;`}
+    }
   }
-
   .title-wrapper {
+    display: flex;
+    justify-content: center;
     margin: 2vh 0 0 0;
     height: 10vh;
+    font-size: 20px;
+    text-align: center;
+    ${media.smallMedium`font-size: 1em;`}
   }
 `
 

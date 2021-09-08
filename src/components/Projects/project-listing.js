@@ -14,7 +14,7 @@ const ProjectListingContainer = styled.div`
 
 const ProjectListing = () => {
   const data = useStaticQuery(graphql`
-    {
+    query ProjectQuery {
       allWpProject {
         edges {
           node {
@@ -22,6 +22,7 @@ const ProjectListing = () => {
             ProjectsACF {
               title
               videoGenre
+              videoEmbed
               thumbnailMedia {
                 projectVideoPreviewMp4
                 projectVideoPreviewWebm

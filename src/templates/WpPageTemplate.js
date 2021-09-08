@@ -9,7 +9,6 @@ import Contact from "../components/Page-Components/Contact/Contact"
 const WpPageTemplate = ({ data }) => {
   const page = data?.allWpPage?.edges[0]?.node || {}
   if (page.slug === "/") {
-    console.log("hi")
     // return <Home />
   } else if (page.slug === "reel") {
     return <Reel />

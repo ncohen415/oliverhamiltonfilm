@@ -1,7 +1,8 @@
-import React from "react"
+import React, { useState } from "react"
 import StillsListing from "./stills-listing"
 import { useStaticQuery, graphql } from "gatsby"
 import styled from "styled-components"
+import Modal from "./Modal"
 
 const StillsPageContainer = styled.div`
   width: 100%;
@@ -9,6 +10,9 @@ const StillsPageContainer = styled.div`
 `
 
 const Stills = () => {
+  const [isModalActive, setIsModalActive] = useState(false)
+  const [modalImage, setModalImage] = useState({})
+
   const data = useStaticQuery(graphql`
     query StillsPageQuery {
       wpPage(title: { eq: "Stills" }) {
@@ -34,7 +38,14 @@ const Stills = () => {
   const stills = data?.wpPage?.StillsACF?.stills
   return (
     <StillsPageContainer>
-      <StillsListing stills={stills} />
+      <StillsListing
+        setIsModalActive={setIsModalActive}
+        setModalImage={setModalImage}
+        stills={stills}
+      />
+      {isModalActive && (
+        <Modal modalImage={modalImage} setIsModalActive={setIsModalActive} />
+      )}
     </StillsPageContainer>
   )
 }

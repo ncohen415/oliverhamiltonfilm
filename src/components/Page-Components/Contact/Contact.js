@@ -5,6 +5,7 @@ import { useStaticQuery, graphql } from "gatsby"
 import IG from "../../../images/instagram.svg"
 import Vimeo from "../../../images/film.svg"
 import FB from "../../../images/facebook.svg"
+import { media } from "../../mq"
 
 const ContactPageContainer = styled.div`
   height: 100%;
@@ -12,9 +13,14 @@ const ContactPageContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   .headshot-wrapper {
-    width: 30%;
-    margin: 4rem 0 2rem 0;
+    width: 100%;
+    margin: 2rem 0 2rem 0;
+    ${media.small`width: 75%;`}
+    ${media.medium`width: 60%;`}
+    ${media.large`width: 40%;`}
   }
   .email-wrapper {
     display: flex;
@@ -26,11 +32,13 @@ const ContactPageContainer = styled.div`
       padding: 0;
       font-weight: bold;
       font-size: 18px;
+      font-family: inherit;
     }
     a {
       color: inherit;
       text-decoration: none;
       font-size: 15px;
+      font-family: inherit;
     }
   }
   .socials {

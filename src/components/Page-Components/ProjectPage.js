@@ -5,29 +5,27 @@ const ProjectPageContainer = styled.div`
   height: 100%;
   width: 100%;
   .video-wrapper {
-    display: flex;
-    width: 100%;
-    height: 60vh;
-    background-color: black;
+    margin: 0 0 2rem 0;
   }
   .title-wrapper {
-    height: 10vh;
-    width: 100%;
-    background-color: green;
   }
   .stills-wrapper {
-    height: 40vh;
-    width: 100%;
-    background-color: red;
   }
 `
 
 const ProjectPage = ({ project }) => {
+  const projectACF = project.ProjectsACF
   console.log(project)
   return (
     <ProjectPageContainer>
-      <div className="video-wrapper"></div>
-      <div className="title-wrapper"></div>
+      <div
+        className="video-wrapper"
+        dangerouslySetInnerHTML={{ __html: projectACF.videoEmbed }}
+      />
+
+      <div className="title-wrapper">
+        <h3>{projectACF.title}</h3>
+      </div>
       <div className="stills-wrapper"></div>
     </ProjectPageContainer>
   )
