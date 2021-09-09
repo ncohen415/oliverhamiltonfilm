@@ -21,8 +21,12 @@ const ProjectListing = () => {
             slug
             ProjectsACF {
               title
-              videoGenre
               videoEmbed
+              format
+              credits {
+                person
+                role
+              }
               thumbnailMedia {
                 projectVideoPreviewMp4
                 projectVideoPreviewWebm

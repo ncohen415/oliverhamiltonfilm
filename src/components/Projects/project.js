@@ -25,7 +25,7 @@ const ProjectContainer = styled.div`
       ${media.large`display: flex;`}
     }
   }
-  .title-wrapper {
+  .title {
     display: flex;
     justify-content: center;
     margin: 2vh 0 0 0;
@@ -40,10 +40,11 @@ const Project = ({ project }) => {
   const [hover, setHover] = useState(null)
   const ACF = project.node.ProjectsACF
 
+  console.log(ACF)
   return (
     <ProjectContainer>
       <div className="video-row">
-        {ACF.thumbnailMedia.map((media, index) => {
+        {ACF.thumbnailMedia?.map((media, index) => {
           return (
             <Video
               project={project}
@@ -56,7 +57,7 @@ const Project = ({ project }) => {
           )
         })}
       </div>
-      <div className="title-wrapper">
+      <div className="title">
         <h3>{ACF.title}</h3>
       </div>
     </ProjectContainer>

@@ -20,8 +20,12 @@ export const data = graphql`
           slug
           ProjectsACF {
             title
-            videoGenre
             videoEmbed
+            format
+            credits {
+              person
+              role
+            }
             thumbnailMedia {
               projectVideoPreviewMp4
               projectVideoPreviewWebm
@@ -29,7 +33,7 @@ export const data = graphql`
                 localFile {
                   childImageSharp {
                     gatsbyImageData(
-                      formats: WEBP
+                      formats: PNG
                       layout: CONSTRAINED
                       placeholder: BLURRED
                       quality: 100

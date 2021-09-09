@@ -23,7 +23,13 @@ query SINGLE_CONTENT_QUERY($id: ID!) {
     modified
     modifiedGmt
     ProjectsACF {
+      credits {
+        fieldGroupName
+        person
+        role
+      }
       fieldGroupName
+      format
       thumbnailMedia {
         fieldGroupName
         projectThumbnailImage {
@@ -35,7 +41,6 @@ query SINGLE_CONTENT_QUERY($id: ID!) {
       }
       title
       videoEmbed
-      videoGenre
     }
     slug
     status

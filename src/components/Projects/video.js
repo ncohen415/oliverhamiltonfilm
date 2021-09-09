@@ -1,13 +1,13 @@
-import React from "react"
+import React, { useState, useEffect, useRef } from "react"
 import styled from "styled-components"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import { motion } from "framer-motion"
 import { Link } from "gatsby"
 
-const VideoContainer = styled(motion.div)`
+const VideoContainer = styled.div`
   display: flex;
   flex: 2 1 33.3333333333333333%;
-  padding: 0.2rem;
+  margin: 0.2rem;
   cursor: pointer;
   transition: 0.2s ease-in-out;
   &.hovered {
@@ -44,7 +44,7 @@ const VideoContainer = styled(motion.div)`
       .thumbnail-video {
         opacity: 0;
         width: 100%;
-        transition: 0.3s ease-in-out;
+        transition: 0.2s ease-in-out;
         z-index: 1;
         visibility: hidden;
         &.hovered {
@@ -57,11 +57,26 @@ const VideoContainer = styled(motion.div)`
 `
 
 const Video = ({ media, index, hover, setHover, project }) => {
+  const [restart, setRestart] = useState([])
+  const videoRef = useRef(null)
+  useEffect(() => {
+    videoRef.current.currentTime = 0.0
+  }, [restart])
+
+  const handleMouseLeave = () => {
+    setHover(null)
+    setRestart(!restart)
+  }
+
+  const handleMouseOver = () => {
+    setHover(index)
+    setRestart(!restart)
+  }
   return (
     <VideoContainer
       key={index}
-      onMouseOver={() => setHover(index)}
-      onMouseLeave={() => setHover(null)}
+      onMouseOver={() => handleMouseOver()}
+      onMouseLeave={() => handleMouseLeave()}
       className={hover === index ? "hovered" : ""}
     >
       <Link to={`/project/${project.node.slug}`}>
@@ -80,9 +95,11 @@ const Video = ({ media, index, hover, setHover, project }) => {
             className={
               hover === index ? "thumbnail-video hovered" : "thumbnail-video"
             }
+            ref={videoRef}
+            preload
+            loop
             muted
             autoPlay
-            loop
           >
             <source src={media.projectVideoPreviewMp4} type="video/mp4" />
             <source src={media.projectVideoPreviewWebm} type="video/webm" />

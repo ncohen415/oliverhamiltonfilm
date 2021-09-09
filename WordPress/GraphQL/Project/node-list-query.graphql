@@ -24,7 +24,13 @@ query NODE_LIST_QUERY($first: Int!, $after: String) {
       modified
       modifiedGmt
       ProjectsACF {
+        credits {
+          fieldGroupName
+          person
+          role
+        }
         fieldGroupName
+        format
         thumbnailMedia {
           fieldGroupName
           projectThumbnailImage {
@@ -36,7 +42,6 @@ query NODE_LIST_QUERY($first: Int!, $after: String) {
         }
         title
         videoEmbed
-        videoGenre
       }
       slug
       status
