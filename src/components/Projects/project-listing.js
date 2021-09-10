@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState, useEffect } from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import styled from "styled-components"
 
@@ -23,6 +23,7 @@ const ProjectListing = () => {
               title
               videoEmbed
               format
+              order
               credits {
                 person
                 role
@@ -50,12 +51,23 @@ const ProjectListing = () => {
     }
   `)
 
-  const projectsACF = data.allWpProject.edges
+  const [orderedProjects, setOrderedProjects] = useState([])
 
+  useEffect(() => {
+    let projects = data.allWpProject.edges
+    let sortedProjects = projects.sort(
+      (a, b) => a.node.ProjectsACF.order - b.node.ProjectsACF.order
+    )
+
+    setOrderedProjects(sortedProjects)
+  }, [])
+  const projectsACF = data.allWpProject.edges
+  console.log("ACF", projectsACF)
+  console.log("STATE", orderedProjects)
   return (
     <ProjectListingContainer>
-      {projectsACF.map((project, index) => {
-        return <Project key={index} project={project} />
+      {orderedProjects.map(project => {
+        return <Project key={project.order} project={project} />
       })}
     </ProjectListingContainer>
   )

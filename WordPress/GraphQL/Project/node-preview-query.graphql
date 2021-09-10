@@ -30,6 +30,7 @@ query PREVIEW_QUERY($id: ID!) {
       }
       fieldGroupName
       format
+      order
       thumbnailMedia {
         fieldGroupName
         projectThumbnailImage {
