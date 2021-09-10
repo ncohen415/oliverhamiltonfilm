@@ -88,18 +88,23 @@ const Header = ({ isOpen, setIsOpen }) => {
 
   const data = useStaticQuery(graphql`
     query HeaderQuery {
-      wpMediaItem(
-        mediaItemUrl: {
-          eq: "https://oliverhamiltonfilm.nlcdev.site/wp-content/uploads/2021/08/0liver-hamilton.jpg"
-        }
-      ) {
-        localFile {
-          childImageSharp {
-            gatsbyImageData(
-              formats: PNG
-              layout: CONSTRAINED
-              placeholder: TRACED_SVG
-            )
+      allWpHeadlessOption(filter: { title: { eq: "Header" } }) {
+        edges {
+          node {
+            headlessOptionsACF {
+              centerImage {
+                localFile {
+                  childImageSharp {
+                    gatsbyImageData(
+                      formats: NO_CHANGE
+                      layout: CONSTRAINED
+                      placeholder: BLURRED
+                      quality: 100
+                    )
+                  }
+                }
+              }
+            }
           }
         }
       }
@@ -129,7 +134,10 @@ const Header = ({ isOpen, setIsOpen }) => {
   }, [])
 
   const menu = data?.wpMenu?.menuItems?.nodes
-  const centerImage = data?.wpMediaItem?.localFile
+  const centerImage = getImage(
+    data?.allWpHeadlessOption?.edges[0]?.node?.headlessOptionsACF?.centerImage
+      ?.localFile
+  )
   return (
     <HeaderContainer>
       <MenuOverlay menu={menu} isOpen={isOpen} setIsOpen={setIsOpen} />
@@ -147,7 +155,7 @@ const Header = ({ isOpen, setIsOpen }) => {
         </div>
         <div class="menu-image-wrapper">
           <Link to="/">
-            <GatsbyImage image={getImage(centerImage)} alt="Oliver Hamilton" />
+            <GatsbyImage image={centerImage} alt="Oliver Hamilton" />
           </Link>
           <div className="hamburger">
             <Hamburger toggled={isOpen} toggle={setIsOpen} />

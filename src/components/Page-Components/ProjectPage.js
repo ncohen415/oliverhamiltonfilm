@@ -1,6 +1,7 @@
 import React from "react"
 import styled from "styled-components"
-
+import { media } from "../mq"
+import useWindowSize from "../../hooks/useWindowSize"
 const ProjectPageContainer = styled.div`
   height: 100%;
   width: 100%;
@@ -11,14 +12,23 @@ const ProjectPageContainer = styled.div`
   }
   .description-wrapper {
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
+    ${media.smallMedium`flex-direction: row;`}
     .credits {
       display: flex;
       flex: 0 1 33.33333%;
       justify-content: flex-start;
       ul {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
         list-style: none;
         margin: 0;
+        margin-bottom: 2rem;
+        ${media.smallMedium`align-items:baseline; flex-direction: column;`}
         li {
           display: flex;
           .role {
@@ -37,6 +47,17 @@ const ProjectPageContainer = styled.div`
         }
       }
     }
+    .mobile-title-wrapper {
+      display: flex;
+      justify-content: center;
+      flex: 0 1 33.33333%;
+      margin-bottom: 2rem;
+      h3 {
+        font-size: 35px;
+        font-family: "Mrs Eaves";
+        text-decoration: underline;
+      }
+    }
     .title-wrapper {
       display: flex;
       justify-content: center;
@@ -49,8 +70,9 @@ const ProjectPageContainer = styled.div`
     .format-wrapper {
       display: flex;
       flex: 0 1 33.33333%;
-      justify-content: flex-end;
+      justify-content: center;
       align-items: baseline;
+      ${media.smallMedium`justify-content: flex-end`}
       .format-label {
         font-size: 25px;
         margin-right: 0.2rem;
@@ -65,6 +87,7 @@ const ProjectPageContainer = styled.div`
 
 const ProjectPage = ({ project }) => {
   const projectACF = project.ProjectsACF
+  const size = useWindowSize()
   console.log(projectACF.format)
   return (
     <ProjectPageContainer>
@@ -73,6 +96,13 @@ const ProjectPage = ({ project }) => {
         dangerouslySetInnerHTML={{ __html: projectACF.videoEmbed }}
       />
       <div className="description-wrapper">
+        {size.width <= 991 ? (
+          <div className="mobile-title-wrapper">
+            <h3>{projectACF.title}</h3>
+          </div>
+        ) : (
+          ""
+        )}
         <div className="credits">
           <ul>
             {projectACF.credits?.map(credit => {
@@ -86,9 +116,13 @@ const ProjectPage = ({ project }) => {
             })}
           </ul>
         </div>
-        <div className="title-wrapper">
-          <h3>{projectACF.title}</h3>
-        </div>
+        {size.width > 991 ? (
+          <div className="mobile-title-wrapper">
+            <h3>{projectACF.title}</h3>
+          </div>
+        ) : (
+          ""
+        )}
         <div className="format-wrapper">
           <p className="format-label">
             {" "}

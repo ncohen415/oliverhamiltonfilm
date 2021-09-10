@@ -2,13 +2,15 @@ import React, { useState } from "react"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
 import styled from "styled-components"
+import { media } from "./mq"
 
 import Header from "./Header/header"
 import "./layout.css"
 
 const LayoutContainer = styled.div`
   margin: 0 auto;
-  padding: 0 3rem 0 3rem;
+  padding: 0 1rem 0 1rem;
+  ${media.small`padding: 0 3rem 0 3rem;`}
   &.open {
     position: fixed;
   }
