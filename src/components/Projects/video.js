@@ -86,7 +86,7 @@ const Video = ({ media, index, hover, setHover, project }) => {
           }
         >
           <GatsbyImage
-            image={getImage(media.projectThumbnailImage.localFile)}
+            image={getImage(media?.projectThumbnailImage?.localFile)}
             alt="Preview Image"
           />
         </div>

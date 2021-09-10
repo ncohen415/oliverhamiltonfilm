@@ -88,14 +88,6 @@ const Header = ({ isOpen, setIsOpen }) => {
 
   const data = useStaticQuery(graphql`
     query HeaderQuery {
-      wpMenu(name: { eq: "Main Menu" }) {
-        menuItems {
-          nodes {
-            url
-            label
-          }
-        }
-      }
       wpMediaItem(
         mediaItemUrl: {
           eq: "https://oliverhamiltonfilm.nlcdev.site/wp-content/uploads/2021/08/0liver-hamilton.jpg"
@@ -108,6 +100,14 @@ const Header = ({ isOpen, setIsOpen }) => {
               layout: CONSTRAINED
               placeholder: TRACED_SVG
             )
+          }
+        }
+      }
+      wpMenu(name: { eq: "Main Menu" }) {
+        menuItems {
+          nodes {
+            url
+            label
           }
         }
       }

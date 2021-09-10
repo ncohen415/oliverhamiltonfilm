@@ -3,8 +3,6 @@ import { useStaticQuery, graphql } from "gatsby"
 import styled from "styled-components"
 import { media } from "../../mq"
 
-//hey
-
 const ReelPageContainer = styled.div`
   height: 100%;
   width: 100%;
