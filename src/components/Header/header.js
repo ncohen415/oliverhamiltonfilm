@@ -144,9 +144,9 @@ const Header = ({ isOpen, setIsOpen }) => {
       <div class="menu-inner-wrapper">
         <div class="menu-left-wrapper">
           <ul>
-            {menuLeft.map(menuItem => {
+            {menuLeft.map((menuItem, index) => {
               return (
-                <MenuItemLeft menuItem={menuItem}>
+                <MenuItemLeft key={index} menuItem={menuItem}>
                   {menuItem.label}
                 </MenuItemLeft>
               )
@@ -163,9 +163,9 @@ const Header = ({ isOpen, setIsOpen }) => {
         </div>
         <div class="menu-right-wrapper">
           <ul>
-            {menuRight.map(menuItem => {
+            {menuRight.map((menuItem, index) => {
               return (
-                <MenuItemRight menuItem={menuItem}>
+                <MenuItemRight key={index} menuItem={menuItem}>
                   {menuItem.label}
                 </MenuItemRight>
               )

@@ -72,7 +72,7 @@ const ProjectPageContainer = styled.div`
       flex: 0 1 33.33333%;
       justify-content: center;
       align-items: baseline;
-      ${media.smallMedium`justify-content: flex-end`}
+      ${media.smallMedium`justify-content:flex-end;`}
       .format-label {
         font-size: 25px;
         margin-right: 0.2rem;

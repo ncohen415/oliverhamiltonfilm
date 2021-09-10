@@ -21,8 +21,10 @@ const FullMenuWrapper = styled.ul`
 const FullMenu = ({ menu, isOpen, setIsOpen }) => {
   return (
     <FullMenuWrapper>
-      {menu.map(menuItem => {
-        return <FullMenuItem menuItem={menuItem} setIsOpen={setIsOpen} />
+      {menu.map((menuItem, index) => {
+        return (
+          <FullMenuItem key={index} menuItem={menuItem} setIsOpen={setIsOpen} />
+        )
       })}
     </FullMenuWrapper>
   )
