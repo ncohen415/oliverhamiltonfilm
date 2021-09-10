@@ -54,8 +54,8 @@ const ProjectListing = () => {
 
   return (
     <ProjectListingContainer>
-      {projectsACF.map(project => {
-        return <Project project={project} />
+      {projectsACF.map((project, index) => {
+        return <Project key={index} project={project} />
       })}
     </ProjectListingContainer>
   )

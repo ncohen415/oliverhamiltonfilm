@@ -10,7 +10,7 @@ const ProjectContainer = styled.div`
   height: 27vh;
   margin-bottom: 4rem;
   ${media.small`height: 37vh; margin-bottom: 2rem;`}
-  ${media.smallMedium`height: 37vh; margin-bottom: 0;`}
+  ${media.smallMedium`height: 44vh; margin-bottom: 0;`}
   ${media.medium`margin-bottom: 2rem;`}
   .video-row {
     display: flex;
@@ -30,9 +30,12 @@ const ProjectContainer = styled.div`
     justify-content: center;
     margin: 2vh 0 0 0;
     height: 10vh;
-    font-size: 20px;
     text-align: center;
     ${media.smallMedium`font-size: 1em;`}
+    h3 {
+      font-family: "Mrs Eaves";
+      font-size: 35px;
+    }
   }
 `
 

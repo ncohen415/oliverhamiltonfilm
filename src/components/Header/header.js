@@ -15,8 +15,7 @@ const HeaderContainer = styled.header`
   width: 100%;
   height: 125px;
   background-color: #ffffff;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family: "Mrs Eaves";
   font-weight: 500;
   max-width: 100vw;
   .menu-inner-wrapper {
@@ -97,7 +96,11 @@ const Header = ({ isOpen, setIsOpen }) => {
           }
         }
       }
-      wpMediaItem(title: { eq: "oliver-hamilton" }) {
+      wpMediaItem(
+        mediaItemUrl: {
+          eq: "https://oliverhamiltonfilm.nlcdev.site/wp-content/uploads/2021/08/0liver-hamilton.jpg"
+        }
+      ) {
         localFile {
           childImageSharp {
             gatsbyImageData(

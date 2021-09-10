@@ -5,6 +5,8 @@ import Close from "../../../images/close.svg"
 
 const ImageModal = styled.div`
   display: flex;
+  justify-content: center;
+  align-items: center;
   position: fixed;
   z-index: 10;
   left: 0;
@@ -18,6 +20,8 @@ const ImageModal = styled.div`
   .image-wrapper {
     height: 100%;
     width: 100%;
+    max-height: 50%;
+    max-width: 45%;
     display: flex;
     justify-content: center;
     align-items: center;

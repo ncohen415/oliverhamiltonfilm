@@ -15,8 +15,6 @@ const StillsListingContainer = styled.div`
     margin: 0.3rem 0.15rem 0.3rem 0.15rem;
     transition: 0.15s ease-in-out;
     opacity: 1;
-    overflow: hidden;
-    max-height: 30vh;
     &:hover {
       opacity: 0.8;
     }
@@ -36,7 +34,7 @@ const StillsListing = ({ stills, setIsModalActive, setModalImage }) => {
             <GatsbyImage
               key={index}
               onClick={e => handleOpenModal(still.photos.localFile)}
-              image={getImage(still.photos.localFile)}
+              image={getImage(still?.photos?.localFile)}
             />
           </div>
         )

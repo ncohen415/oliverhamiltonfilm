@@ -8,6 +8,7 @@ const MenuItemRightContainer = styled.li`
   a {
     text-decoration: none;
     color: black;
+    font-size: 30px;
   }
 `
 

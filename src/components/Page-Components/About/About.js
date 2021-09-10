@@ -24,6 +24,14 @@ const AboutPageContainer = styled.div`
     padding: 0;
     text-align: center;
     ${media.medium`margin: 0; padding: 0 1rem 0 0; text-align: left;`}
+    h3 {
+      font-size: 35px;
+      font-family: "Mrs Eaves";
+    }
+    p {
+      font-family: "Mrs Eaves";
+      font-size: 25px;
+    }
   }
 `
 

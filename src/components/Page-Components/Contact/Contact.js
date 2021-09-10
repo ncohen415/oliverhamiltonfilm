@@ -13,8 +13,7 @@ const ContactPageContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family: "Mrs Eaves";
   .headshot-wrapper {
     width: 100%;
     margin: 2rem 0 2rem 0;
@@ -27,17 +26,17 @@ const ContactPageContainer = styled.div`
     flex-direction: column;
     align-items: center;
     margin-bottom: 2rem;
-    p {
+    h3 {
       margin-bottom: 0.5rem;
       padding: 0;
       font-weight: bold;
-      font-size: 18px;
+      font-size: 35px;
       font-family: inherit;
     }
     a {
       color: inherit;
       text-decoration: none;
-      font-size: 15px;
+      font-size: 24px;
       font-family: inherit;
     }
   }
@@ -45,7 +44,8 @@ const ContactPageContainer = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    p {
+    h3 {
+      font-family: "Mrs Eaves";
       margin-bottom: 0.75rem;
       padding: 0;
       font-weight: bold;
@@ -102,13 +102,13 @@ const Contact = () => {
         <GatsbyImage image={getImage(contactACF.headshot.localFile)} />
       </div>
       <div className="email-wrapper">
-        <p>email:</p>
+        <h3>email:</h3>
         <a target="_blank" rel="noreferrer" href={`mailto:${contactACF.email}`}>
           {contactACF.email}
         </a>
       </div>
       <div className="socials">
-        <p>socials:</p>
+        <h3>socials:</h3>
         <div className="socials-wrapper">
           <a href={contactACF.instagram}>
             <img src={IG} alt="Instagram" />
