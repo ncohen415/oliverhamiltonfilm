@@ -49,7 +49,7 @@ const ContactPageContainer = styled.div`
       margin-bottom: 0.75rem;
       padding: 0;
       font-weight: bold;
-      font-size: 18px;
+      font-size: 35px;
     }
     .socials-wrapper {
       display: flex;
