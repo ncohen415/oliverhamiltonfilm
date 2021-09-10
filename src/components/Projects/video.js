@@ -60,7 +60,9 @@ const Video = ({ media, index, hover, setHover, project }) => {
   const [restart, setRestart] = useState([])
   const videoRef = useRef(null)
   useEffect(() => {
-    videoRef.current.currentTime = 0.0
+    if (media.projectVideoPreviewMp4 !== null) {
+      videoRef.current.currentTime = 0.0
+    }
   }, [restart])
 
   const handleMouseLeave = () => {
@@ -90,21 +92,30 @@ const Video = ({ media, index, hover, setHover, project }) => {
             alt="Preview Image"
           />
         </div>
-        <div className="video-wrapper">
-          <video
-            className={
-              hover === index ? "thumbnail-video hovered" : "thumbnail-video"
-            }
-            ref={videoRef}
-            preload
-            loop
-            muted
-            autoPlay
-          >
-            <source src={media.projectVideoPreviewMp4} type="video/mp4" />
-            <source src={media.projectVideoPreviewWebm} type="video/webm" />
-          </video>
-        </div>
+        {media.projectVideoPreviewMp4 === null ? (
+          <div className="image-wrapper">
+            <GatsbyImage
+              image={getImage(media?.projectThumbnailImage?.localFile)}
+              alt="Preview Image"
+            />
+          </div>
+        ) : (
+          <div className="video-wrapper">
+            <video
+              className={
+                hover === index ? "thumbnail-video hovered" : "thumbnail-video"
+              }
+              ref={videoRef}
+              preload
+              loop
+              muted
+              autoPlay
+            >
+              <source src={media.projectVideoPreviewMp4} type="video/mp4" />
+              <source src={media.projectVideoPreviewWebm} type="video/webm" />
+            </video>
+          </div>
+        )}
       </Link>
     </VideoContainer>
   )
