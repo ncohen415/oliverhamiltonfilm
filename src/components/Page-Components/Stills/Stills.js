@@ -3,6 +3,7 @@ import StillsListing from "./stills-listing"
 import { useStaticQuery, graphql } from "gatsby"
 import styled from "styled-components"
 import Modal from "./Modal"
+import SEO from "../../seo"
 
 const StillsPageContainer = styled.div`
   width: 100%;
@@ -41,6 +42,7 @@ const Stills = () => {
   const stills = data?.wpPage?.StillsACF?.stills
   return (
     <StillsPageContainer className={isModalActive === true ? "open" : ""}>
+      <SEO title="Stills" />
       <StillsListing
         setIsModalActive={setIsModalActive}
         setModalImage={setModalImage}

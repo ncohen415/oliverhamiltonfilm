@@ -6,6 +6,7 @@ import { media } from "../../mq"
 import Slider from "react-slick"
 import "../../../../node_modules/slick-carousel/slick/slick.css"
 import "../../../../node_modules/slick-carousel/slick/slick-theme.css"
+import SEO from "../../seo"
 
 const AboutPageContainer = styled.div`
   width: 100%;
@@ -21,23 +22,6 @@ const AboutPageContainer = styled.div`
     margin: 0 0 3rem 0;
     padding: 0;
     ${media.medium`margin: 0; padding: 0 1rem 0 0; max-width: 40%;`}
-    .slick-slider {
-      height: 100%;
-      width: 100%;
-      display: flex;
-      button {
-        display: none !important;
-      }
-      .slick-list {
-        max-width: 100vw;
-        overflow: hidden;
-        .slick-track {
-          height: 100%;
-          display: flex;
-          justify-content: center;
-        }
-      }
-    }
   }
   .blurb-wrapper {
     flex: 0 1 48%;
@@ -92,6 +76,7 @@ const About = () => {
 
   return (
     <AboutPageContainer>
+      <SEO title="About" />
       <div className="image-wrapper">
         <Slider {...settings}>
           {aboutACF?.aboutPageImages?.map((image, index) => {

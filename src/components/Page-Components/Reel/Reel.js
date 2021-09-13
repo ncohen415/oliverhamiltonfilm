@@ -2,6 +2,7 @@ import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import styled from "styled-components"
 import { media } from "../../mq"
+import SEO from "../../seo"
 
 const ReelPageContainer = styled.div`
   height: 100%;
@@ -44,6 +45,7 @@ const Reel = () => {
   console.log(ReelACF)
   return (
     <ReelPageContainer>
+      <SEO title="Reel" />
       <div
         className="reel-container"
         dangerouslySetInnerHTML={{ __html: ReelACF.reelEmbed }}

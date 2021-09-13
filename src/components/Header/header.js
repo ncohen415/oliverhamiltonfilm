@@ -141,8 +141,8 @@ const Header = ({ isOpen, setIsOpen }) => {
   return (
     <HeaderContainer>
       <MenuOverlay menu={menu} isOpen={isOpen} setIsOpen={setIsOpen} />
-      <div class="menu-inner-wrapper">
-        <div class="menu-left-wrapper">
+      <div className="menu-inner-wrapper">
+        <div className="menu-left-wrapper">
           <ul>
             {menuLeft.map((menuItem, index) => {
               return (
@@ -153,7 +153,7 @@ const Header = ({ isOpen, setIsOpen }) => {
             })}
           </ul>
         </div>
-        <div class="menu-image-wrapper">
+        <div className="menu-image-wrapper">
           <Link to="/">
             <GatsbyImage image={centerImage} alt="Oliver Hamilton" />
           </Link>
@@ -161,7 +161,7 @@ const Header = ({ isOpen, setIsOpen }) => {
             <Hamburger toggled={isOpen} toggle={setIsOpen} />
           </div>
         </div>
-        <div class="menu-right-wrapper">
+        <div className="menu-right-wrapper">
           <ul>
             {menuRight.map((menuItem, index) => {
               return (

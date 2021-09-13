@@ -6,6 +6,7 @@ import IG from "../../../images/instagram.svg"
 import Vimeo from "../../../images/film.svg"
 import FB from "../../../images/facebook.svg"
 import { media } from "../../mq"
+import SEO from "../../seo"
 
 const ContactPageContainer = styled.div`
   height: 100%;
@@ -97,6 +98,7 @@ const Contact = () => {
 
   return (
     <ContactPageContainer>
+      <SEO title="Contact" />
       <div className="headshot-wrapper">
         <GatsbyImage image={getImage(contactACF.headshot.localFile)} />
       </div>

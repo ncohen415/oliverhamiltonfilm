@@ -2,6 +2,7 @@ import React from "react"
 import styled from "styled-components"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import Close from "../../../images/close.svg"
+import { media } from "../../mq"
 
 const ImageModal = styled.div`
   display: flex;
@@ -20,11 +21,11 @@ const ImageModal = styled.div`
   .image-wrapper {
     height: 100%;
     width: 100%;
-    max-height: 50%;
-    max-width: 45%;
+    max-width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
+    ${media.smallMedium`max-width: 45%; max-height: 50%;`}
     .gatsby-image-wrapper {
       width: 80%;
     }
@@ -44,20 +45,16 @@ const ImageModal = styled.div`
   }
 `
 
-const Modal = ({
-  still,
-  setClicked,
-  clicked,
-  modalImage,
-  setIsModalActive,
-}) => {
-  console.log(still)
+const Modal = ({ still, modalImage, setIsModalActive }) => {
+  const handleCloseModal = () => {
+    setIsModalActive(false)
+  }
   return (
-    <ImageModal onClick={e => setIsModalActive(false)}>
+    <ImageModal onClick={e => handleCloseModal()}>
       <div className="image-wrapper">
         <GatsbyImage image={getImage(modalImage)} />
       </div>
-      <button onClick={e => setIsModalActive(false)} className="close">
+      <button onClick={e => handleCloseModal()} className="close">
         <img src={Close} alt="Close" />
       </button>
     </ImageModal>

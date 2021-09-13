@@ -22,7 +22,8 @@ const StillsListingContainer = styled.div`
 `
 
 const StillsListing = ({ stills, setIsModalActive, setModalImage }) => {
-  const handleOpenModal = still => {
+  function handleOpenModal(e, still) {
+    e.preventDefault()
     setIsModalActive(true)
     setModalImage(still)
   }
@@ -31,11 +32,12 @@ const StillsListing = ({ stills, setIsModalActive, setModalImage }) => {
       {stills.map((still, index) => {
         return (
           <div className="wrapper">
-            <GatsbyImage
-              key={index}
-              onClick={e => handleOpenModal(still.photos.localFile)}
-              image={getImage(still?.photos?.localFile)}
-            />
+            <button onClick={e => handleOpenModal(e, still.photos.localFile)}>
+              <GatsbyImage
+                key={index}
+                image={getImage(still?.photos?.localFile)}
+              />
+            </button>
           </div>
         )
       })}

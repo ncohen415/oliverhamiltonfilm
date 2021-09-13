@@ -2,6 +2,8 @@ import React from "react"
 import styled from "styled-components"
 import { media } from "../mq"
 import useWindowSize from "../../hooks/useWindowSize"
+import SEO from "../seo"
+
 const ProjectPageContainer = styled.div`
   height: 100%;
   width: 100%;
@@ -87,6 +89,7 @@ const ProjectPage = ({ project }) => {
   console.log(projectACF.format)
   return (
     <ProjectPageContainer>
+      <SEO title={projectACF.title} />
       <div
         className="video-wrapper"
         dangerouslySetInnerHTML={{ __html: projectACF.videoEmbed }}
