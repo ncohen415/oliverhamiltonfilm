@@ -37,7 +37,6 @@ query SINGLE_CONTENT_QUERY($id: ID!) {
           __typename
           id
         }
-        projectVideoPreviewMp4
         projectVideoPreviewWebm
       }
       title

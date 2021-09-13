@@ -38,7 +38,6 @@ query NODE_LIST_QUERY($first: Int!, $after: String) {
             __typename
             id
           }
-          projectVideoPreviewMp4
           projectVideoPreviewWebm
         }
         title

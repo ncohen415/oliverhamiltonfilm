@@ -12,7 +12,7 @@ const ProjectContainer = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
-  margin: 0 0 4rem 0;
+  margin: 0 0 1rem 0;
   ${media.small`margin-bottom: 2rem;`}
   ${media.smallMedium`margin-bottom: 0;`}
   ${media.medium`margin-bottom: 2rem;`}
@@ -26,8 +26,15 @@ const ProjectContainer = styled.div`
     height: 100%;
     width: 100%;
     display: flex;
-    button {
-      display: none !important;
+    button:nth-child(1) {
+      display: block !important;
+      margin-left: 2rem !important;
+      z-index: 1000 !important;
+    }
+    button:nth-child(3) {
+      display: block !important;
+      margin-right: 2rem !important;
+      z-index: 1000 !important;
     }
     .slick-list {
       max-width: 100vw;
@@ -60,8 +67,9 @@ const ProjectContainer = styled.div`
     text-align: center;
     ${media.smallMedium`font-size: 1em;`}
     h3 {
-      font-family: "Mrs Eaves";
+      font-family: "Mrs Eaves All Caps";
       font-size: 35px;
+      font-weight: 100;
     }
   }
 `
@@ -88,7 +96,6 @@ const Project = ({ project }) => {
         <div className="mobile-wrapper">
           <Slider {...settings}>
             {ACF.thumbnailMedia?.map((media, index) => {
-              console.log(media)
               return (
                 <div>
                   <MobileStill

@@ -14,26 +14,43 @@ const ProjectPageContainer = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    ${media.smallMedium`flex-direction: row;`}
+    hr {
+      width: 18%;
+      margin: auto auto calc(1.45rem - 1px) auto;
+      ${media.smallMedium`margin:0 0 calc(1.45rem - 1px) 0;`}
+    }
+    .title-wrapper {
+      display: flex;
+      justify-content: center;
+      ${media.smallMedium`justify-content: flex-start;`}
+      h3 {
+        font-size: 55px;
+        font-weight: 400;
+        font-family: "Mrs Eaves All Caps";
+        margin: 0 0 0.5rem 0;
+        text-align: center;
+        ${media.smallMedium`text-align: left;`}
+      }
+    }
     .credits {
       display: flex;
       flex: 0 1 33.33333%;
       justify-content: flex-start;
+      font-family: "Mrs Eaves All Caps";
       ul {
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
         width: 100%;
+        margin: -0.33rem 0 0 0;
         list-style: none;
-        margin: 0;
-        margin-bottom: 2rem;
         ${media.smallMedium`align-items:baseline; flex-direction: column;`}
         li {
           display: flex;
+          margin: 0;
           .role {
             font-size: 23px;
-
             margin-right: 0.2rem;
           }
           .slash {
@@ -42,44 +59,23 @@ const ProjectPageContainer = styled.div`
           .person {
             margin-left: 0.2rem;
             font-size: 23px;
-            font-weight: bold;
           }
         }
       }
     }
-    .mobile-title-wrapper {
-      display: flex;
-      justify-content: center;
-      flex: 0 1 33.33333%;
-      margin-bottom: 2rem;
-      h3 {
-        font-size: 35px;
-        font-family: "Mrs Eaves";
-        text-decoration: underline;
-      }
-    }
-    .title-wrapper {
-      display: flex;
-      justify-content: center;
-      flex: 0 1 33.33333%;
-      h3 {
-        font-size: 35px;
-        font-family: "Mrs Eaves";
-      }
-    }
+
     .format-wrapper {
       display: flex;
-      flex: 0 1 33.33333%;
       justify-content: center;
-      align-items: baseline;
-      ${media.smallMedium`justify-content:flex-end;`}
+      font-family: "Mrs Eaves All Caps";
+      margin: -0.5rem 0 -0.2rem 0;
+      ${media.smallMedium`justify-content: flex-start;`}
       .format-label {
         font-size: 25px;
         margin-right: 0.2rem;
       }
       .format-value {
         font-size: 25px;
-        font-weight: bold;
       }
     }
   }
@@ -96,12 +92,23 @@ const ProjectPage = ({ project }) => {
         dangerouslySetInnerHTML={{ __html: projectACF.videoEmbed }}
       />
       <div className="description-wrapper">
-        {size.width <= 991 ? (
-          <div className="mobile-title-wrapper">
-            <h3>{projectACF.title}</h3>
-          </div>
-        ) : (
+        <div className="title-wrapper">
+          <h3>{projectACF.title}</h3>
+        </div>
+        <hr />
+        {projectACF.format === null ? (
           ""
+        ) : (
+          <>
+            <div className="format-wrapper">
+              <p className="format-label">
+                {" "}
+                {projectACF.format === null ? "" : "Format:"}{" "}
+              </p>
+              <p className="format-value">{projectACF.format}</p>
+            </div>
+            <hr />
+          </>
         )}
         <div className="credits">
           <ul>
@@ -115,20 +122,6 @@ const ProjectPage = ({ project }) => {
               )
             })}
           </ul>
-        </div>
-        {size.width > 991 ? (
-          <div className="mobile-title-wrapper">
-            <h3>{projectACF.title}</h3>
-          </div>
-        ) : (
-          ""
-        )}
-        <div className="format-wrapper">
-          <p className="format-label">
-            {" "}
-            {projectACF.format === null ? "" : "Format:"}{" "}
-          </p>
-          <p className="format-value">{projectACF.format}</p>
         </div>
       </div>
     </ProjectPageContainer>

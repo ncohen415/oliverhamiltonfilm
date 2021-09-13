@@ -25,7 +25,7 @@ const Stills = () => {
               localFile {
                 childImageSharp {
                   gatsbyImageData(
-                    formats: PNG
+                    formats: JPG
                     layout: CONSTRAINED
                     placeholder: BLURRED
                     quality: 100

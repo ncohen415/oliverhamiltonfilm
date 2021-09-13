@@ -3,9 +3,12 @@ query NODE_LIST_QUERY($first: Int!, $after: String) {
     nodes {
       AboutACF {
         aboutPageBlurb
-        aboutPageImage {
-          __typename
-          id
+        aboutPageImages {
+          aboutPageImage {
+            __typename
+            id
+          }
+          fieldGroupName
         }
         fieldGroupName
       }

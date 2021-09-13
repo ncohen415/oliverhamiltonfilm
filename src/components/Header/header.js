@@ -15,7 +15,7 @@ const HeaderContainer = styled.header`
   width: 100%;
   height: 125px;
   background-color: #ffffff;
-  font-family: "Mrs Eaves";
+  font-family: "Mrs Eaves All Caps";
   font-weight: 500;
   max-width: 100vw;
   .menu-inner-wrapper {
@@ -96,7 +96,7 @@ const Header = ({ isOpen, setIsOpen }) => {
                 localFile {
                   childImageSharp {
                     gatsbyImageData(
-                      formats: NO_CHANGE
+                      formats: JPG
                       layout: CONSTRAINED
                       placeholder: BLURRED
                       quality: 100

@@ -27,13 +27,12 @@ export const data = graphql`
               role
             }
             thumbnailMedia {
-              projectVideoPreviewMp4
               projectVideoPreviewWebm
               projectThumbnailImage {
                 localFile {
                   childImageSharp {
                     gatsbyImageData(
-                      formats: PNG
+                      formats: JPG
                       layout: CONSTRAINED
                       placeholder: BLURRED
                       quality: 100

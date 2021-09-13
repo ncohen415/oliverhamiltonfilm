@@ -13,7 +13,7 @@ const ContactPageContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  font-family: "Mrs Eaves";
+  font-family: "Mrs Eaves Roman Lining";
   .headshot-wrapper {
     width: 100%;
     margin: 2rem 0 2rem 0;
@@ -30,7 +30,7 @@ const ContactPageContainer = styled.div`
       margin-bottom: 0.5rem;
       padding: 0;
       font-weight: bold;
-      font-size: 35px;
+      font-family: "Mrs Eaves Roman Lining";
       font-family: inherit;
     }
     a {
@@ -45,11 +45,10 @@ const ContactPageContainer = styled.div`
     flex-direction: column;
     align-items: center;
     h3 {
-      font-family: "Mrs Eaves";
+      font-family: "Mrs Eaves Roman Lining";
       margin-bottom: 0.75rem;
       padding: 0;
       font-weight: bold;
-      font-size: 35px;
     }
     .socials-wrapper {
       display: flex;
@@ -81,7 +80,7 @@ const Contact = () => {
             localFile {
               childImageSharp {
                 gatsbyImageData(
-                  formats: PNG
+                  formats: JPG
                   layout: CONSTRAINED
                   placeholder: BLURRED
                   quality: 100
@@ -102,13 +101,13 @@ const Contact = () => {
         <GatsbyImage image={getImage(contactACF.headshot.localFile)} />
       </div>
       <div className="email-wrapper">
-        <h3>email:</h3>
+        <h3>Email:</h3>
         <a target="_blank" rel="noreferrer" href={`mailto:${contactACF.email}`}>
           {contactACF.email}
         </a>
       </div>
       <div className="socials">
-        <h3>socials:</h3>
+        <h3>Socials:</h3>
         <div className="socials-wrapper">
           <a href={contactACF.instagram}>
             <img src={IG} alt="Instagram" />
