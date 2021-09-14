@@ -20,6 +20,7 @@ export const data = graphql`
           slug
           ProjectsACF {
             title
+            pitchDeckLink
             videoEmbed
             format
             credits {

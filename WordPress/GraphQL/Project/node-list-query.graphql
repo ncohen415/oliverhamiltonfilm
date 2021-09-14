@@ -32,6 +32,7 @@ query NODE_LIST_QUERY($first: Int!, $after: String) {
         fieldGroupName
         format
         order
+        pitchDeckLink
         thumbnailMedia {
           fieldGroupName
           projectThumbnailImage {

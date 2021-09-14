@@ -3,6 +3,7 @@ import styled from "styled-components"
 import { media } from "../mq"
 import useWindowSize from "../../hooks/useWindowSize"
 import SEO from "../seo"
+import { Link } from "gatsby"
 
 const ProjectPageContainer = styled.div`
   height: 100%;
@@ -24,7 +25,27 @@ const ProjectPageContainer = styled.div`
     .title-wrapper {
       display: flex;
       justify-content: center;
-      ${media.smallMedium`justify-content: flex-start;`}
+      flex-direction: column;
+      ${media.smallMedium`justify-content: flex-start; flex-direction: row;`}
+      //Styles for conditional
+      hr {
+        margin: auto;
+        ${media.smallMedium`display: none;`}
+      }
+      .pitch {
+        font-size: 45px;
+        ${media.smallMedium`font-size: 55px;`}
+        a {
+          color: red;
+          transition: 0.2s ease-in-out;
+          &:hover {
+            color: black;
+            opacity: 0.7;
+          }
+        }
+      }
+
+      //Regular Styles
       h3 {
         font-size: 55px;
         font-weight: 400;
@@ -36,7 +57,6 @@ const ProjectPageContainer = styled.div`
     }
     .credits {
       display: flex;
-      flex: 0 1 33.33333%;
       justify-content: flex-start;
       font-family: "Mrs Eaves All Caps";
       ul {
@@ -86,7 +106,9 @@ const ProjectPageContainer = styled.div`
 const ProjectPage = ({ project }) => {
   const projectACF = project.ProjectsACF
   const size = useWindowSize()
-  console.log(projectACF.format)
+  console.log(projectACF)
+
+  console.log(project)
   return (
     <ProjectPageContainer>
       <SEO title={projectACF.title} />
@@ -95,9 +117,26 @@ const ProjectPage = ({ project }) => {
         dangerouslySetInnerHTML={{ __html: projectACF.videoEmbed }}
       />
       <div className="description-wrapper">
-        <div className="title-wrapper">
-          <h3>{projectACF.title}</h3>
-        </div>
+        {project.slug === "down-the-line" &&
+        projectACF.pitchDeckLink !== undefined ? (
+          <div
+            style={{ justifyContent: "space-between" }}
+            className="title-wrapper"
+          >
+            <h3>{projectACF.title}</h3>
+            <hr />
+            <h3 className="pitch">
+              <Link target="_blank" to={projectACF.pitchDeckLink}>
+                See Pitch Deck Here
+              </Link>
+            </h3>
+          </div>
+        ) : (
+          <div className="title-wrapper">
+            <h3>{projectACF.title}</h3>
+          </div>
+        )}
+
         <hr />
         {projectACF.format === null ? (
           ""

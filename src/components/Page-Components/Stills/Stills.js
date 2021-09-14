@@ -8,9 +8,6 @@ import SEO from "../../seo"
 const StillsPageContainer = styled.div`
   width: 100%;
   height: 100%;
-  &.open {
-    position: fixed;
-  }
 `
 
 const Stills = () => {
@@ -41,7 +38,7 @@ const Stills = () => {
   `)
   const stills = data?.wpPage?.StillsACF?.stills
   return (
-    <StillsPageContainer className={isModalActive === true ? "open" : ""}>
+    <StillsPageContainer>
       <SEO title="Stills" />
       <StillsListing
         setIsModalActive={setIsModalActive}

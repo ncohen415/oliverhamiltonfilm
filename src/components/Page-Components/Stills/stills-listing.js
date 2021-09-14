@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState } from "react"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import styled from "styled-components"
 import { media } from "../../mq"
@@ -11,12 +11,19 @@ const StillsListingContainer = styled.div`
   ${media.medium`column-count: 3;`}
 
   .wrapper {
-    cursor: pointer;
     margin: 0.3rem 0.15rem 0.3rem 0.15rem;
     transition: 0.15s ease-in-out;
     opacity: 1;
     &:hover {
       opacity: 0.8;
+    }
+    button {
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 0;
+      margin: 0;
+      outline: none;
     }
   }
 `
