@@ -1,6 +1,16 @@
 query NODE_LIST_QUERY($first: Int!, $after: String) {
-  tags(first: $first, after: $after) {
+  categories(first: $first, after: $after) {
     nodes {
+      ancestors(first: 100) {
+        nodes {
+          id
+        }
+      }
+      wpChildren: children(first: 100) {
+        nodes {
+          id
+        }
+      }
       contentNodes(first: 100) {
         nodes {
           id
@@ -15,6 +25,13 @@ query NODE_LIST_QUERY($first: Int!, $after: String) {
       isTermNode
       link
       name
+      wpParent: parent {
+        node {
+          id
+        }
+      }
+      parentDatabaseId
+      parentId
       posts(first: 100) {
         nodes {
           id
@@ -26,7 +43,6 @@ query NODE_LIST_QUERY($first: Int!, $after: String) {
           id
         }
       }
-      taxonomyName
       termGroupId
       termTaxonomyId
       uri

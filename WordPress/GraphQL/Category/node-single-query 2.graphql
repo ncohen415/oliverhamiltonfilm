@@ -1,5 +1,5 @@
-query PREVIEW_QUERY($id: ID!) {
-  category(id: $id, idType: ID, asPreview: true) {
+query SINGLE_CONTENT_QUERY($id: ID!) {
+  category(id: $id) {
     ancestors(first: 100) {
       nodes {
         id
@@ -42,7 +42,6 @@ query PREVIEW_QUERY($id: ID!) {
         id
       }
     }
-    taxonomyName
     termGroupId
     termTaxonomyId
     uri

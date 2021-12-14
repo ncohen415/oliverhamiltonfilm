@@ -1,5 +1,5 @@
 query NODE_LIST_QUERY($first: Int!, $after: String) {
-  tags(first: $first, after: $after) {
+  postFormats(first: $first, after: $after) {
     nodes {
       contentNodes(first: 100) {
         nodes {
@@ -26,7 +26,6 @@ query NODE_LIST_QUERY($first: Int!, $after: String) {
           id
         }
       }
-      taxonomyName
       termGroupId
       termTaxonomyId
       uri

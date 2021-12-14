@@ -1,6 +1,7 @@
 query NODE_LIST_QUERY($first: Int!, $after: String) {
-  projects(first: $first, after: $after) {
+  headlessOptions(first: $first, after: $after) {
     nodes {
+      content
       contentType {
         node {
           id
@@ -11,7 +12,22 @@ query NODE_LIST_QUERY($first: Int!, $after: String) {
       dateGmt
       desiredSlug
       enclosure
+      featuredImage {
+        node {
+          __typename
+          id
+        }
+      }
+      featuredImageDatabaseId
+      featuredImageId
       guid
+      headlessOptionsACF {
+        centerImage {
+          __typename
+          id
+        }
+        fieldGroupName
+      }
       id
       isContentNode
       isTermNode
@@ -23,27 +39,6 @@ query NODE_LIST_QUERY($first: Int!, $after: String) {
       link
       modified
       modifiedGmt
-      ProjectsACF {
-        credits {
-          fieldGroupName
-          person
-          role
-        }
-        fieldGroupName
-        format
-        order
-        pitchDeckLink
-        thumbnailMedia {
-          fieldGroupName
-          projectThumbnailImage {
-            __typename
-            id
-          }
-          projectVideoVimeoLink
-        }
-        title
-        videoEmbed
-      }
       slug
       status
       template {

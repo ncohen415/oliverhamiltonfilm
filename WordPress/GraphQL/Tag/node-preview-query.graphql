@@ -25,6 +25,7 @@ query PREVIEW_QUERY($id: ID!) {
         id
       }
     }
+    taxonomyName
     termGroupId
     termTaxonomyId
     uri

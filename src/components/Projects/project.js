@@ -88,8 +88,6 @@ const Project = ({ project }) => {
 
   const size = useWindowSize()
 
-  console.log(size)
-
   return (
     <ProjectContainer>
       {size?.width <= 1200 ? (
@@ -126,7 +124,6 @@ const Project = ({ project }) => {
           })}
         </div>
       )}
-
       <div className="title">
         <h3>{ACF.title}</h3>
       </div>

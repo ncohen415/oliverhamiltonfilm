@@ -3,6 +3,8 @@ import styled from "styled-components"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import { motion } from "framer-motion"
 import { Link } from "gatsby"
+import ReactPlayer from 'react-player'
+
 
 const VideoContainer = styled.div`
   display: flex;
@@ -28,42 +30,31 @@ const VideoContainer = styled.div`
       opacity: 1;
       transition: 0.3s ease-in-out;
       width: 100%;
-
       &.hovered {
         opacity: 0;
         visibility: hidden;
       }
     }
     .video-wrapper {
+      position: relative;
+      opacity: 0;
       display: flex;
       flex-direction: column;
       justify-content: center;
-      height: 100%;
       width: 100%;
       overflow: hidden;
-      .thumbnail-video {
-        opacity: 0;
-        width: 100%;
-        transition: 0.2s ease-in-out;
-        z-index: 1;
-        visibility: hidden;
-        &.hovered {
+      transition: 0.2s ease-in-out;
+      visibility: hidden;
+      &.hovered {
           opacity: 1;
           visibility: visible;
         }
-      }
     }
   }
 `
 
 const Video = ({ media, index, hover, setHover, project }) => {
   const [restart, setRestart] = useState([])
-  const videoRef = useRef(null)
-  useEffect(() => {
-    if (media.projectVideoPreviewWebm !== null) {
-      videoRef.current.currentTime = 0.0
-    }
-  }, [restart])
 
   const handleMouseLeave = () => {
     setHover(null)
@@ -100,19 +91,25 @@ const Video = ({ media, index, hover, setHover, project }) => {
             />
           </div>
         ) : (
-          <div className="video-wrapper">
-            <video
-              className={
-                hover === index ? "thumbnail-video hovered" : "thumbnail-video"
-              }
-              ref={videoRef}
-              preload
-              loop
-              muted
-              autoPlay
-            >
-              <source src={media.projectVideoPreviewWebm} type="video/webm" />
-            </video>
+          <div className={
+            hover === index ? "video-wrapper hovered" : "video-wrapper"
+          }>
+            <div style={{
+              position: "absolute",
+              height: "100%",
+              width: "100%",
+              zIndex: "10",
+
+            }}/>
+            <ReactPlayer
+              url={media?.projectVideoVimeoLink}
+              muted={true}
+              loop={true}
+              playing={true}
+              width={"100%"}
+
+            />
+
           </div>
         )}
       </Link>

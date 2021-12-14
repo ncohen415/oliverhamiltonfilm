@@ -28,7 +28,7 @@ export const data = graphql`
               role
             }
             thumbnailMedia {
-              projectVideoPreviewWebm
+              projectVideoVimeoLink
               projectThumbnailImage {
                 localFile {
                   childImageSharp {
