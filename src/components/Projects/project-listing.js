@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import styled from "styled-components"
+import Scroll from "./Scroll"
 
 //COMPONENTS
 import Project from "./project"
+import LoadingProject from "./LoadingProject"
 
 const ProjectListingContainer = styled.div`
   display: flex;
@@ -30,7 +32,7 @@ const ProjectListing = () => {
                 role
               }
               thumbnailMedia {
-                projectVideoPreviewWebm
+                projectVideoVimeoLink
                 projectThumbnailImage {
                   localFile {
                     childImageSharp {
@@ -51,24 +53,39 @@ const ProjectListing = () => {
     }
   `)
 
+  
   const [orderedProjects, setOrderedProjects] = useState([])
 
+ 
   useEffect(() => {
-    let projects = data.allWpProject.edges
-    let sortedProjects = projects.sort(
-      (a, b) => a.node.ProjectsACF.order - b.node.ProjectsACF.order
+    const projects = data?.allWpProject?.edges
+    const sortedProjects = projects?.sort(
+      (a, b) => a.node?.ProjectsACF?.order - b.node?.ProjectsACF?.order
     )
-
-    setOrderedProjects(sortedProjects)
+    if(sortedProjects){
+      setOrderedProjects(sortedProjects)
+    }
   }, [])
+
   const projectsACF = data.allWpProject.edges
-  console.log("ACF", projectsACF)
-  console.log("STATE", orderedProjects)
+  console.log(document.readyState)
+
+  const stateCheck = setInterval(() => {
+    if (document.readyState === 'complete') {
+      clearInterval(stateCheck);
+    }
+  }, 10000);
+  
   return (
     <ProjectListingContainer>
-      {orderedProjects.map(project => {
-        return <Project key={project.order} project={project} />
-      })}
+      {
+        stateCheck ? 
+        <Scroll
+          projects={orderedProjects}
+        />
+        : 
+        <LoadingProject/>
+      }
     </ProjectListingContainer>
   )
 }

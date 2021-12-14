@@ -1,5 +1,6 @@
 query SINGLE_CONTENT_QUERY($id: ID!) {
-  project(id: $id) {
+  headlessOption(id: $id) {
+    content
     contentType {
       node {
         id
@@ -10,7 +11,22 @@ query SINGLE_CONTENT_QUERY($id: ID!) {
     dateGmt
     desiredSlug
     enclosure
+    featuredImage {
+      node {
+        __typename
+        id
+      }
+    }
+    featuredImageDatabaseId
+    featuredImageId
     guid
+    headlessOptionsACF {
+      centerImage {
+        __typename
+        id
+      }
+      fieldGroupName
+    }
     id
     isContentNode
     isTermNode
@@ -22,27 +38,6 @@ query SINGLE_CONTENT_QUERY($id: ID!) {
     link
     modified
     modifiedGmt
-    ProjectsACF {
-      credits {
-        fieldGroupName
-        person
-        role
-      }
-      fieldGroupName
-      format
-      order
-      pitchDeckLink
-      thumbnailMedia {
-        fieldGroupName
-        projectThumbnailImage {
-          __typename
-          id
-        }
-        projectVideoVimeoLink
-      }
-      title
-      videoEmbed
-    }
     slug
     status
     template {

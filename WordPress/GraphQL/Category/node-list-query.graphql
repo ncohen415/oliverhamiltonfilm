@@ -43,6 +43,7 @@ query NODE_LIST_QUERY($first: Int!, $after: String) {
           id
         }
       }
+      taxonomyName
       termGroupId
       termTaxonomyId
       uri

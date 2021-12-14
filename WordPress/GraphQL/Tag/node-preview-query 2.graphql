@@ -1,15 +1,5 @@
 query PREVIEW_QUERY($id: ID!) {
-  category(id: $id, idType: ID, asPreview: true) {
-    ancestors(first: 100) {
-      nodes {
-        id
-      }
-    }
-    wpChildren: children(first: 100) {
-      nodes {
-        id
-      }
-    }
+  tag(id: $id, idType: ID, asPreview: true) {
     contentNodes(first: 100) {
       nodes {
         id
@@ -24,13 +14,6 @@ query PREVIEW_QUERY($id: ID!) {
     isTermNode
     link
     name
-    wpParent: parent {
-      node {
-        id
-      }
-    }
-    parentDatabaseId
-    parentId
     posts(first: 100) {
       nodes {
         id
@@ -42,7 +25,6 @@ query PREVIEW_QUERY($id: ID!) {
         id
       }
     }
-    taxonomyName
     termGroupId
     termTaxonomyId
     uri
