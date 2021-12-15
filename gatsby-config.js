@@ -26,6 +26,9 @@ module.exports = {
           graphql: {
             writeQueriesToDisk: true,
           },
+          production: {
+            allow404Images: true,
+          },
         },
         type: {
           Post: {
