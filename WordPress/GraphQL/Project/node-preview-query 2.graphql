@@ -1,0 +1,56 @@
+query PREVIEW_QUERY($id: ID!) {
+  project(id: $id, idType: ID, asPreview: true) {
+    contentType {
+      node {
+        id
+      }
+    }
+    databaseId
+    date
+    dateGmt
+    desiredSlug
+    enclosure
+    guid
+    id
+    isContentNode
+    isTermNode
+    lastEditedBy {
+      node {
+        id
+      }
+    }
+    link
+    modified
+    modifiedGmt
+    ProjectsACF {
+      credits {
+        fieldGroupName
+        person
+        role
+      }
+      fieldGroupName
+      format
+      order
+      pitchDeckLink
+      thumbnailMedia {
+        fieldGroupName
+        projectThumbnailImage {
+          __typename
+          id
+        }
+        projectVideoPreviewWebm
+      }
+      title
+      videoEmbed
+    }
+    slug
+    status
+    template {
+      templateName
+      __typename
+    }
+    title
+    uri
+    __typename
+  }
+}

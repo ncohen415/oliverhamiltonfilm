@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import styled from "styled-components"
+import Scroll from "./Scroll"
 
 //COMPONENTS
 import Project from "./project"
+import LoadingProject from "./LoadingProject"
 
 const ProjectListingContainer = styled.div`
   display: flex;
@@ -52,6 +54,7 @@ const ProjectListing = () => {
   `)
 
   const [orderedProjects, setOrderedProjects] = useState([])
+  const [loading, setLoading] = useState(true)
 
   useEffect(() => {
     let projects = data.allWpProject.edges
@@ -61,15 +64,24 @@ const ProjectListing = () => {
 
     setOrderedProjects(sortedProjects)
   }, [])
-  const projectsACF = data.allWpProject.edges
-  console.log("ACF", projectsACF)
-  console.log("STATE", orderedProjects)
+
+
+  const readyCheck = setInterval(() => {
+    if (document.readyState === 'complete') {
+setLoading(false)
+    }
+  }, 3000);
+
   return (
-    <ProjectListingContainer>
-      {orderedProjects.map(project => {
-        return <Project key={project.order} project={project} />
-      })}
-    </ProjectListingContainer>
+    <>
+      {loading === false ?
+        <ProjectListingContainer>
+          <Scroll projects={orderedProjects} />
+        </ProjectListingContainer>
+        :
+        <LoadingProject />
+      }
+    </>
   )
 }
 
