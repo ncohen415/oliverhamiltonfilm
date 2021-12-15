@@ -22,12 +22,13 @@ module.exports = {
         develop: {
           hardCacheMediaFiles: true,
         },
+        production: {
+          allow404Images: true,
+          allow401Images: true,
+        },
         debug: {
           graphql: {
             writeQueriesToDisk: true,
-          },
-          production: {
-            allow404Images: true,
           },
         },
         type: {
