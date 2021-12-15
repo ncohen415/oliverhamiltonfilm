@@ -4,7 +4,6 @@ import styled from "styled-components"
 import Scroll from "./Scroll"
 
 //COMPONENTS
-import Project from "./project"
 import LoadingProject from "./LoadingProject"
 
 const ProjectListingContainer = styled.div`
