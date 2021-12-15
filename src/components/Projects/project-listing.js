@@ -67,10 +67,8 @@ const ProjectListing = () => {
 
 
   const readyCheck = setInterval(() => {
-    if (document.readyState === 'complete') {
-setLoading(false)
-    }
-  }, 3000);
+    setLoading(false)
+  }, 4000);
 
   return (
     <>
