@@ -42,7 +42,6 @@ const Reel = () => {
     }
   `)
   const ReelACF = data?.wpPage?.ReelACF
-  console.log(ReelACF)
   return (
     <ReelPageContainer>
       <SEO title="Reel" />

@@ -88,8 +88,6 @@ const Project = ({ project }) => {
 
   const size = useWindowSize()
 
-  console.log(size)
-
   return (
     <ProjectContainer>
       {size?.width <= 1200 ? (

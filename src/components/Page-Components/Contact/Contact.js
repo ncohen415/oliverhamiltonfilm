@@ -94,7 +94,6 @@ const Contact = () => {
     }
   `)
   const contactACF = data?.wpPage?.ContactACF
-  console.log(contactACF)
 
   return (
     <ContactPageContainer>

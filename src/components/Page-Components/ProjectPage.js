@@ -106,9 +106,6 @@ const ProjectPageContainer = styled.div`
 const ProjectPage = ({ project }) => {
   const projectACF = project.ProjectsACF
   const size = useWindowSize()
-  console.log(projectACF)
-
-  console.log(project)
   return (
     <ProjectPageContainer>
       <SEO title={projectACF.title} />
